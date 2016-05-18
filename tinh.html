@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            display:block;
+        }
+        #so1,#so2,button,#kq:focus{
+            outline: none;
+        }
+        li{
+            list-style-type: none;
+            margin-top: 20px;
+        }
+        button{
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        button:hover{
+            -webkit-transform: scale(1.2);
+        }
+        span{
+            margin-right: 32px;
+        }
+        input{
+            width: 300px;
+            font-size: 25px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        function phep(id,n) {
+            var x = document.getElementById("so1").value;
+            var y = document.getElementById("so2").value;
+            if (x==''||isNaN(x)){
+                alert("Ban can nhap vao so thu nhat");
+                return false;
+            }
+            if (y==''||isNaN(y)){
+                alert("Ban can nhap vao so thu hai");
+                return false;
+            }
+            if(n!='^') {
+                var num1 = parseFloat(x);
+                var num2 = parseFloat(y);
+                var tinh = num1 + n +num2;
+                document.getElementById("kq").value = eval(tinh);
+            }
+            else{
+                var mu=1;
+                var num1 = parseFloat(x);
+                var num2 = parseFloat(y);
+                for(i=0;i<num2;i++){
+                    mu *= num1;
+                }
+                document.getElementById("kq").value = eval(mu);
+            }
+        }
+
+    </script>
+    <ul>
+        <li>
+            <label for="so1" style="margin-right: 20px">Nhập số thứ nhất</label>
+            <input type="text" id="so1">
+        </li>
+        <li>
+            <label for="so1" style="margin-right: 30px">Nhập số thứ hai</label>
+            <input type="text" id="so2">
+        </li>
+        <li>
+            <span>Chọn phép toán</span>
+            <button onclick="phep('cong','+')">+</button>
+            <button onclick="phep('tru','-')">-</button>
+            <button onclick="phep('nhan','*')">*</button>
+            <button onclick="phep('chia','/')">/</button>
+            <button onclick="phep('mu','^')">^</button>
+        </li>
+        <li>
+            <span style="margin-right: 82px">Kết quả</span>
+            <input type="text" readonly="readonly" id="kq"/>
+        </li>
+
+    <img id=" logo" src="logo.png" style="width: 33px;height: 33px; margin:20px 0 0 140px "/>
+</body>
+</html>

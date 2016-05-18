@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html" />
+    <meta name="author" content="GallerySoft.info" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+        var msec=0
+        var sec=0
+        var min=0
+        function a() {
+            var nut = document.getElementById('e');
+            switch (nut.className) {
+                case 'button':
+                {
+                    start();
+                    nut.classList.remove('button');
+                    nut.classList.add('button2');
+                    break;
+                }
+                case 'button2':
+                {
+                    stop()
+                    nut.classList.remove('button2');
+                    nut.classList.add('button');
+                }
+            }
+        }
+        function start() {
+                document.forms[0].display.value = min + ":" + sec + ":" + msec
+                chay = setTimeout("start()", 1)
+                msec++
+                if (msec == 100) {
+                    msec = 0
+                    sec++
+                }
+                if (sec == 60) {
+                    sec = 0
+                    min++
+                }
+        }
+        function stop()
+        {
+            clearTimeout(chay)
+        }
+        function reset() {
+            min=sec=msec=0;
+            document.forms[0].display.value = min + ":" + sec + ":" + msec
+        }
+    </script>
+    <div>
+        <form>
+            <input type="text" id="bo-dem" name="display" value="0:0:0">
+        </form>
+        <button style="margin-left: 175px" id="e" class="button" onclick="a()">Start</button>
+        <input class="button" type="button" value="Stop" onclick="stop()">
+        <input class="button" type="button" value="Reset" onclick="reset()">
+    </div>
+<img id=" logo" src="logo.png" style="width: 33px;height: 33px; margin:20px 0 0 250px "/>
+
+</body>
+</html>
